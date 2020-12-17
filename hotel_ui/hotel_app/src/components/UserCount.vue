@@ -1,7 +1,7 @@
 <template>
-    <div id="UserBalance">
+    <div id="UserCount">
         <h2>{{username}}</h2>
-        <h2>Tu saldo es: <span> {{balance}} COP </span> </h2>
+        <h2>Tus datos son: <span> {{count}} . </span> </h2>
     </div>
 </template>
 
@@ -9,11 +9,11 @@
 <script>
 import axios from 'axios';
 export default {
-    name: 'UserBalance',
+    name: 'UserCount',
     data: function (){
         return {
             username: "",
-            balance: 0
+            count: ""
         }
     },
     created: function(){
@@ -21,7 +21,8 @@ export default {
         let self = this
         axios.get("http://127.0.0.1:8000/user/count/" + this.username)
             .then((result) => {
-                self.balance = result.data.balance
+                console.log("objetos %0:");
+                self.count = result.data.count
             })
             .catch((error) => {
             alert("ERROR Servidor");
@@ -32,7 +33,7 @@ export default {
 
 
 <style>
-    #UserBalance{
+    #UserCount{
         width: 100%;
         height: 100%;
         display: flex;
@@ -40,11 +41,11 @@ export default {
         justify-content: center;
         align-items: center;
     }
-    #UserBalance h2{
+    #UserCount h2{
         font-size: 50px;
         color: #283747;
     }
-    #UserBalance span{
+    #UserCount span{
         color: crimson;
         font-weight: bold;
     }
