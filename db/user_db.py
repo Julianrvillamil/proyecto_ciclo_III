@@ -18,16 +18,16 @@ database_users = Dict[str, UserInDB]##CREATE THE DICTIONARY FOR THE USERS IN THE
 database_users = {
     "camilo24": UserInDB(**{"username":"camilo24",
                             "password":"root",
-                            "name":"Camilo"
-                            "lastname":"Rodríguez"
-                            "document":"741852963"
+                            "name":"Camilo",
+                            "lastname":"Rodríguez",
+                            "document":"741852963",
                             "rank":"A"}),
 
     "andres18": UserInDB(**{"username":"andres18",
                             "password":"hola",
-                            "name":"Andres"
-                            "lastname":"Gómez"
-                            "document":"852963741"
+                            "name":"Andres",
+                            "lastname":"Gómez",
+                            "document":"852963741",
                             "rank":"B"}),
 }
 ########################
