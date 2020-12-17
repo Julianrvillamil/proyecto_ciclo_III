@@ -18,6 +18,17 @@ from fastapi import HTTPException##FOR DISPLAY THE ERRORS, LIKE ERROR ""404 PAGE
 
 api = FastAPI()##CREATE THE API-REST
 
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
+    "http://localhost", "http://localhost:8080",
+]
+api.add_middleware(
+  CORSMiddleware, allow_origins=origins,
+  allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
+)
+
 ##IN THIS CASE WE USE post THAT IS FOR CREATE BECAUSE WE ARE PASSING A PASSWORD
 @api.post("/user/auth/")##TO ASOCIATE THE DEF BELOW TO A WEB SERVICE WE USE THIS DECORATOR @api.post/get/pot/delete
 async def auth_user(user_in: UserIn):##async=asynchronous ## RESIVE THE USER

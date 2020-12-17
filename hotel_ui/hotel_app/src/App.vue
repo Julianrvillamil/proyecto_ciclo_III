@@ -2,16 +2,16 @@
   <div id="app">
     <div class="header">
 
-      <h1>Hotel</h1>
+      <h1>Hotel Lucho</h1>
       <nav>
         <button v-on:click="init" v-if="is_auth" > Hotel </button>
-        <button v-on:click="getBalance" v-if="is_auth" > Registro de Clientes </button>
+        <button v-on:click="getCount" v-if="is_auth" > Registro de Clientes </button>
         <button v-if="is_auth" > Reservas </button>
         <button v-if="is_auth" >Cerrar Sesión</button>
       </nav>
     </div>
     <div class="main-component">
-
+      <router-view></router-view>
     </div>
 
     <div class="footer">
@@ -33,10 +33,25 @@ export default {
   },
   
   methods: {
+    init: function(){
+      if(this.$route.name != "user"){
+        let username = localStorage.getItem("current_username")
+        this.$router.push({name: "user", params:{username:username}})
+}
+  },
+  getCount: function(){
+        if(this.$route.name != "user_count"){
+          let username = localStorage.getItem("current_username")
+          this.$router.push({ name:"user_count",
+                              params:{username:username}
+                            })
+        }
+      },
   },
   beforeCreate: function(){
     localStorage.setItem('current_username', 'camilo24')
     localStorage.setItem('isAuth', true)
+    this.$router.push({name:"user",params:{username:'camilo24'}})
   }
 }
 </script>
